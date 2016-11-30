@@ -20,7 +20,7 @@ import javax.validation.constraints.NotNull;
 import net.logstash.logback.encoder.LogstashAccessEncoder;
 import net.logstash.logback.fieldnames.LogstashAccessFieldNames;
 import org.eclipse.jetty.server.RequestLog;
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.NotBlank;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
  */
 @SuppressWarnings("WeakerAccess")
 @JsonTypeName("json-logback-access")
-public abstract class JsonRequestLogFactory
+public class JsonRequestLogFactory
     extends AbstractAppenderFactory<IAccessEvent>
     implements RequestLogFactory<RequestLog> {
 
@@ -111,7 +111,7 @@ public abstract class JsonRequestLogFactory
     private String statusCode = "response";
     private String hostname = null;
     private String requestedUrl = null;
-    @NotEmpty
+    @NotBlank
     private String message = "message";
 
     @JsonProperty
