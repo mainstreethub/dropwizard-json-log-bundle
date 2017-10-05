@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.mainstreethub</groupId>
     <artifactId>parent-pom</artifactId>
-    <version>1.5.1</version>
+    <version>1.6.0</version>
   </parent>
 
   <artifactId>dropwizard-json-log-bundle</artifactId>
@@ -38,8 +38,8 @@
     <java.version>1.8</java.version>
 
     <awaitility.version>2.0.0</awaitility.version>
-    <dropwizard.version>1.0.2</dropwizard.version>
-    <logstash-logback-encoder.version>4.8</logstash-logback-encoder.version>
+    <dropwizard.version>1.1.4</dropwizard.version>
+    <logstash-logback-encoder.version>4.9</logstash-logback-encoder.version>
   </properties>
 
   <build>
@@ -103,6 +103,12 @@
       <groupId>org.awaitility</groupId>
       <artifactId>awaitility</artifactId>
       <version>${awaitility.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
