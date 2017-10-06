@@ -9,12 +9,22 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Predicate;
 import org.junit.rules.ExternalResource;
 
+/**
+ * Interceptor which will capture any messages written to the console to test assertions against.
+ */
 public class ConsoleInterceptor extends ExternalResource {
+  private final PrintStream current;
+
   private List<String> logs = new CopyOnWriteArrayList<>();
+
+  public ConsoleInterceptor() {
+    current = System.out;
+    assert current != null;
+  }
 
   @Override
   protected void before() throws Throwable {
-    System.setOut(new PrintStream(System.out) {
+    final PrintStream out = new PrintStream(current) {
       @Override
       public void write(byte[] b) throws IOException {
         logs.add(new String(b));
@@ -27,7 +37,9 @@ public class ConsoleInterceptor extends ExternalResource {
 
         super.write(buf, off, len);
       }
-    });
+    };
+
+    System.setOut(out);
   }
 
   public Callable<Boolean> contains(Predicate<String> test) {
@@ -40,6 +52,6 @@ public class ConsoleInterceptor extends ExternalResource {
 
   @Override
   protected void after() {
-    System.setOut(null);
+    System.setOut(current);
   }
 }
