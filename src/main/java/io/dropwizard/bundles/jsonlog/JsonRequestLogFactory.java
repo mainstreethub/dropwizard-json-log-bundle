@@ -80,6 +80,7 @@ public class JsonRequestLogFactory
     fieldNames.setFieldsStatusCode(fields.getStatusCode().orElse(null));
     fieldNames.setFieldsHostname(fields.getHostname().orElse(null));
     fieldNames.setFieldsRequestedUrl(fields.getRequestedUrl().orElse(null));
+    fieldNames.setFieldsRemoteUser(fields.getRemoteUser().orElse(null));
     fieldNames.setMessage(fields.getMessage());
     encoder.setFieldNames(fieldNames);
 
@@ -107,6 +108,7 @@ public class JsonRequestLogFactory
     private String method = "verb";
     private String protocol = "protocol";
     private String remoteHost = "source_host";
+    private String remoteUser = "remote_user";
     private String requestedUri = "request";
     private String statusCode = "response";
     private String hostname = null;
@@ -137,6 +139,11 @@ public class JsonRequestLogFactory
     @JsonProperty
     public void setRemoteHost(String remoteHost) {
       this.remoteHost = remoteHost;
+    }
+
+    @JsonProperty
+    public void setRemoteUser(String remoteUser) {
+      this.remoteUser = remoteUser;
     }
 
     @JsonProperty
@@ -172,6 +179,11 @@ public class JsonRequestLogFactory
     @JsonProperty
     public Optional<String> getRemoteHost() {
       return Optional.ofNullable(remoteHost);
+    }
+
+    @JsonProperty
+    public Optional<String> getRemoteUser() {
+      return Optional.ofNullable(remoteUser);
     }
 
     @JsonProperty
