@@ -71,16 +71,16 @@ public class JsonRequestLogFactory
     final LogstashAccessEncoder encoder = new LogstashAccessEncoder();
 
     final LogstashAccessFieldNames fieldNames = new LogstashAccessFieldNames();
-    fieldNames.setFieldsContentLength(fields.getContentLength().orElse(null));
-    fieldNames.setFieldsElapsedTime(fields.getElapsedTime().orElse(null));
-    fieldNames.setFieldsMethod(fields.getMethod().orElse(null));
-    fieldNames.setFieldsProtocol(fields.getProtocol().orElse(null));
-    fieldNames.setFieldsRemoteHost(fields.getRemoteHost().orElse(null));
-    fieldNames.setFieldsRequestedUri(fields.getRequestedUri().orElse(null));
-    fieldNames.setFieldsStatusCode(fields.getStatusCode().orElse(null));
-    fieldNames.setFieldsHostname(fields.getHostname().orElse(null));
-    fieldNames.setFieldsRequestedUrl(fields.getRequestedUrl().orElse(null));
-    fieldNames.setFieldsRemoteUser(fields.getRemoteUser().orElse(null));
+    fieldNames.setContentLength(fields.getContentLength().orElse(null));
+    fieldNames.setElapsedTime(fields.getElapsedTime().orElse(null));
+    fieldNames.setMethod(fields.getMethod().orElse(null));
+    fieldNames.setProtocol(fields.getProtocol().orElse(null));
+    fieldNames.setRemoteHost(fields.getRemoteHost().orElse(null));
+    fieldNames.setRequestedUri(fields.getRequestedUri().orElse(null));
+    fieldNames.setStatusCode(fields.getStatusCode().orElse(null));
+    fieldNames.setRemoteHost(fields.getHostname().orElse(null));
+    fieldNames.setRequestedUrl(fields.getRequestedUrl().orElse(null));
+    fieldNames.setRemoteUser(fields.getRemoteUser().orElse(null));
     fieldNames.setMessage(fields.getMessage());
     encoder.setFieldNames(fieldNames);
 
